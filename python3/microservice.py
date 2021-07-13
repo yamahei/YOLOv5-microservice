@@ -38,6 +38,8 @@ def detection():
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(filepath)
     detected = _detection(filepath)
+
+    os.remove(filepath)
     return jsonify(detected)
 
 if __name__ == "__main__":
