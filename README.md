@@ -23,7 +23,10 @@ $ docker-compose exec python3 bash
 
 ### サンプル実行
 ```
-# sample file from Unsplash(https://unsplash.com/)
+# healthcheck
+$ curl http://localhost:8010/
+YOLOv5 my micro service is running.
+# detection - sample file from Unsplash(https://unsplash.com/)
 $ curl -X POST -F file=@sampleimage.jpg http://localhost:8010/detection
 [
   {
