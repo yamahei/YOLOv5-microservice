@@ -7,8 +7,6 @@ YOLOv5で並列に物体検出するイントラ（自分）用マイクロサ�
 * YOLOv5は動いた模様
 * FIXME: Python公式イメージは起動時にPython対話シェルが立ち上がっちゃう？
 * TODO: Flask + マルチスレッドで並列に検出してくれることを期待している
-* TODO: LAN内で自分用に使うからFlaskのWebサーバで良しとする
-* TODO: サービス化してコンテナ起動と同時に使えるようにする
 
 使い方
 ------
@@ -25,15 +23,44 @@ $ docker-compose exec python3 bash
 
 ### サンプル実行
 ```
-# python sample.py
-Using cache found in /root/.cache/torch/hub/ultralytics_yolov5_master
-YOLOv5 � 2021-7-12 torch 1.9.0+cu102 CPU
-
-Fusing layers...
-/usr/local/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning:Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
-  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
-Model Summary: 224 layers, 7266973 parameters, 0 gradients
-Adding AutoShape...
-image 1/1: 720x1280 2 persons, 2 ties
-Speed: 431.4ms pre-process, 80.8ms inference, 1.2ms NMS per image at shape (1, 3, 384, 640)
+# sample file from Unsplash(https://unsplash.com/)
+$ curl -X POST -F file=@sampleimage.jpg http://localhost:8010/detection
+[
+  {
+    "label": "elephant",
+    "p1": {
+      "x": 239.77001953125,
+      "y": 159.95553588867188
+    },
+    "p2": {
+      "x": 382.79400634765625,
+      "y": 378.6675109863281
+    },
+    "score": 0.9328093528747559
+  },
+  {
+    "label": "person",
+    "p1": {
+      "x": 462.5768127441406,
+      "y": 183.0345458984375
+    },
+    "p2": {
+      "x": 483.7295837402344,
+      "y": 209.35955810546875
+    },
+    "score": 0.793636679649353
+  },
+  {
+    "label": "truck",
+    "p1": {
+      "x": 405.8444519042969,
+      "y": 207.40274047851562
+    },
+    "p2": {
+      "x": 531.7650756835938,
+      "y": 301.3897399902344
+    },
+    "score": 0.7933353781700134
+  },
+# 後略
 ```

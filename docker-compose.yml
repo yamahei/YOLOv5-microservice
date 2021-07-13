@@ -1,8 +1,11 @@
 version: '3'
 services:
   python3:
+    command: python microservice.py
     restart: always
     build: .
     container_name: 'python3'
     working_dir: '/root/'
     tty: true
+    ports:
+      - 0.0.0.0:8010:8010
