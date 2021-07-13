@@ -29,11 +29,12 @@ RUN cd yolov5
 RUN wget https://raw.githubusercontent.com/yamahei/yolov5/master/requirements.txt
 RUN pip install -r requirements.txt
 
-# --
-RUN pip install flask
-
+#
+# microservice
+#
 
 RUN cd
+RUN pip install flask
 COPY python3/microservice.py /root/microservice.py
 
 # --------------------
