@@ -15,11 +15,6 @@ YOLOv5で並列に物体検出するイントラ（自分）用マイクロサ�
 $ docker-compose up --build
 ```
 
-### 別ターミナルでbash起動
-```
-$ docker-compose exec python3 bash
-```
-
 ### サンプル実行
 ```
 # healthcheck
