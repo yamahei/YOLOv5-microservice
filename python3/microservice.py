@@ -28,6 +28,10 @@ def root():
     name = "YOLOv5 my micro service is running."
     return name
 
+@app.route('/names')
+def names():
+    return jsonify(names)
+
 @app.route('/detection', methods=['POST'])
 def detection():
     if 'file' not in request.files:

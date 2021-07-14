@@ -20,6 +20,9 @@ $ docker-compose up --build
 # healthcheck
 $ curl http://localhost:8010/
 YOLOv5 my micro service is running.
+# label list
+$ curl http://localhost:8010/names
+TODO: 
 # detection - sample file from Unsplash(https://unsplash.com/)
 $ curl -X POST -F file=@sampleimage.jpg http://localhost:8010/detection
 [
