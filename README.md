@@ -5,7 +5,13 @@ YOLOv5で並列に物体検出するイントラ（自分）用マイクロサ�
 ----
 
 * YOLOv5は動いた模様
-* TODO: Flask + マルチスレッドで並列に検出してくれることを期待している
+* TODO: Flask + マルチスレッドで並列に検出してくれることを期待している*
+* TODO: 下記のエラーの改善
+  * ネットワークの遅延なのか、detectionの遅延なのか
+  * 呼び出し側が矢継ぎ早だからか
+
+> ERROR: An HTTP request took too long to complete. Retry with --verbose to obtain debug information.
+> If you encounter this issue regularly because of slow network conditions, consider setting COMPOSE_HTTP_TIMEOUT to a higher value (current value: 60).
 
 使い方
 ------
