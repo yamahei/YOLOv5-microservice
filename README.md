@@ -18,6 +18,7 @@ YOLOv5で並列に物体検出するイントラ（自分）用マイクロサ�
 
 ### ビルド-起動する
 ```
+#$ docker system prune -f
 $ docker-compose up --build
 ```
 
@@ -69,4 +70,16 @@ $ curl -X POST -F file=@sampleimage.jpg http://localhost:8010/detection
     "score": 0.7933353781700134
   },
 # 後略
+```
+
+### トラブルシュート
+
+下記のエラーが出てコンテナが停止する場合の対処方法（暫定）
+
+> ERROR: An HTTP request took too long to complete. Retry with --verbose to obtain debug information.
+> If you encounter this issue regularly because of slow network conditions, consider setting COMPOSE_HTTP_TIMEOUT to a higher value (current value: 60).
+
+```
+export DOCKER_CLIENT_TIMEOUT=120
+export COMPOSE_HTTP_TIMEOUT=120
 ```
