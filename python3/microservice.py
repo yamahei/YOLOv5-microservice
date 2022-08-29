@@ -4,18 +4,19 @@ import uuid
 import os
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # or yolov5m, yolov5x, custom
-names = model.names
+print(model.names)
 
 def _detection(img):
     results = model(img)
     detects = []
     for result in results.xyxy[0]:
-        p1x, p1y, p2x, p2y, score, index = result
+        p1x, p1y, p2x, p2y, score, _index = result
+        index = _index.to(torch.int).item()
         detects.append({
             "p1": { "x": float(p1x), "y": float(p1y) },
             "p2": { "x": float(p2x), "y": float(p2y) },
             "score": float(score),
-            "label": names[int(index)]
+            "label": model.names[index]
         })
     return detects
 
@@ -30,7 +31,7 @@ def root():
 
 @app.route('/names')
 def names():
-    return jsonify(names)
+    return jsonify(model.names)
 
 @app.route('/detection', methods=['POST'])
 def detection():
